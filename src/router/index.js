@@ -3,6 +3,7 @@ import Router from "vue-router";
 import Home from "components/home";
 import Account from "components/account";
 import Login from "components/login";
+import Register from "components/register";
 import store from "../store";
 
 Vue.use(Router);
@@ -38,10 +39,16 @@ export default new Router({
       beforeEnter: ifAuthenticated
     },
     {
-      path: "/login",
+      path: "/Sign In",
       name: "Login",
       component: Login,
       beforeEnter: ifNotAuthenticated
+    },
+    {
+      path:"/Sign Up",
+      name:"Register",
+      component:Register,
+      beforeEnter:ifNotAuthenticated
     }
   ]
 });

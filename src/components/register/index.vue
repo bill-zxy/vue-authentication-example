@@ -20,7 +20,7 @@
 </template>
 
 <style>
-.login {
+.register {
   display: flex;
   flex-direction: column;
   width: 300px;

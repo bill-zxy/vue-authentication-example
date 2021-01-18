@@ -1,0 +1,20 @@
+-------------------- Auto-Git Log --------------------
+		Mon Jan 18 2021 23:13:30 GMT+0800 (China Standard Time)
+------------------------------------------------------
+
+Modified files:
+* index.html
+* package.json
+
+
+Created files:
+* .autogit/autogit.json
+* .index.html.swp
+* package-lock.json
+* src/components/register/index.vue
+
+
+Deleted files:
+
+
+Renamed files:
