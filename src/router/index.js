@@ -39,13 +39,13 @@ export default new Router({
       beforeEnter: ifAuthenticated
     },
     {
-      path: "/Sign In",
+      path: "/login",
       name: "Login",
       component: Login,
       beforeEnter: ifNotAuthenticated
     },
     {
-      path:"/Sign Up",
+      path:"/register",
       name:"Register",
       component:Register,
       beforeEnter:ifNotAuthenticated

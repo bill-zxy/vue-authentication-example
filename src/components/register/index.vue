@@ -6,6 +6,9 @@
       <h1>Sign up</h1>
       <label>User name</label>
       <input required v-model="username" type="text" placeholder="Snoopy" />
+      <label>Email</label>
+      <input required v-model="email" type="text" placeholder="Snoopy" />
+
       <label>Password</label>
       <input
         required
@@ -14,7 +17,7 @@
         placeholder="Password"
       />
       <hr />
-      <button type="submit">Sign Up</button>
+      <button type="submit">Submit</button>
     </form>
   </div>
 </template>
@@ -36,15 +39,44 @@ export default {
   data() {
     return {
       username: "dogo",
+      email:"",
       password: "dogy"
     };
   },
   methods: {
     register: function() {
-      const { username, password } = this;
-      this.$store.dispatch(AUTH_REQUEST, { username, password }).then(() => {
-        this.$router.push("/");
-      });
+    
+    //  const { username, password } = this;
+
+  	//adopting hash to protect the password
+    //	let password_sha = hex_sha1(hex_sha1( this.password ));
+
+  		//需要想后端发送的登录参数
+  		let registerParam = {
+  			name: this.username,
+  			email:
+        password: this.password
+  		}
+
+      //设置在登录状态
+      this.isLoging = true;
+      
+  		//请求后端,比如:
+  		this.$http.post( '/login', {
+  		param: loginParam).then((response) => {
+        if(response.data.code == 1){
+          let expireDays = 1000 * 60 * 60 * 24 * 15;
+          this.setCookie('session', response.data.session, expireDays);
+          //登录成功后
+          this.$router.push('/user_info'); 
+        }
+	    }, (response) => {
+	        //Error
+	    });
+
+//      this.$store.dispatch(AUTH_REQUEST, { username, password }).then(() => {
+  //      this.$router.push("/");
+  //    });
     }
   }
 };

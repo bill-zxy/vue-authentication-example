@@ -20,9 +20,11 @@
       </li>
       <li v-if="!isAuthenticated && !authLoading">
         <router-link to="/login">Sign In  </router-link>
-        <router-link to="/register">  Sign Up</router-link>
+        <router-link to="/register">  Sign Up</router-link> 
       </li>
     </ul>
+
+
   </div>
 </template>
 
