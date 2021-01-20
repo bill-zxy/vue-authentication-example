@@ -1,0 +1,22 @@
+-------------------- Auto-Git Log --------------------
+		Tue Jan 19 2021 22:46:51 GMT+0800 (China Standard Time)
+------------------------------------------------------
+
+Modified files:
+* index.html
+* src/components/navigation/index.vue
+* src/components/register/index.vue
+* src/router/index.js
+
+
+Created files:
+* .autogit/logs/log-18-0-2021-23-43-38.txt
+* src/components/home2/fakeFeed.js
+* src/components/home2/feedItem.vue
+* src/components/home2/index.vue
+
+
+Deleted files:
+
+
+Renamed files:

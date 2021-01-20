@@ -8,8 +8,7 @@
       <input required v-model="username" type="text" placeholder="Snoopy" />
       <label>Email</label>
       <input required v-model="email" type="text" placeholder="Snoopy" />
-
-      <label>Password</label>
+      <label>Password</label>c
       <input
         required
         v-model="password"
@@ -19,6 +18,8 @@
       <hr />
       <button type="submit">Submit</button>
     </form>
+    <div v-if="isCreated"> Creating account successfully!</div>
+    <div v-else> Fail to create a new account!</div>
   </div>
 </template>
 
@@ -38,6 +39,7 @@ export default {
   name: "register",
   data() {
     return {
+      isCreated:false,
       username: "dogo",
       email:"",
       password: "dogy"
@@ -46,37 +48,28 @@ export default {
   methods: {
     register: function() {
     
-    //  const { username, password } = this;
-
   	//adopting hash to protect the password
     //	let password_sha = hex_sha1(hex_sha1( this.password ));
 
-  		//需要想后端发送的登录参数
-  		let registerParam = {
-  			name: this.username,
-  			email:
-        password: this.password
-  		}
-
-      //设置在登录状态
-      this.isLoging = true;
-      
-  		//请求后端,比如:
-  		this.$http.post( '/login', {
-  		param: loginParam).then((response) => {
-        if(response.data.code == 1){
-          let expireDays = 1000 * 60 * 60 * 24 * 15;
-          this.setCookie('session', response.data.session, expireDays);
-          //登录成功后
-          this.$router.push('/user_info'); 
-        }
-	    }, (response) => {
-	        //Error
-	    });
-
-//      this.$store.dispatch(AUTH_REQUEST, { username, password }).then(() => {
-  //      this.$router.push("/");
-  //    });
+  //需要想后端发送的登录参数
+    
+  axios.post('/create', {
+         name: this.username,
+         email:this.email,
+         password:this.password        // 参数 firstName
+    })
+    .then(function (response) {
+        console.log(response);
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
+    
+   this.isLoging = true;
+  
+  this.$store.dispatch(AUTH_REQUEST, { username, password }).then(() => {
+      this.$router.push("/");
+    });
     }
   }
 };
