@@ -5,7 +5,7 @@
     <form class="register" @submit.prevent="register">
       <h1>Sign up</h1>
       <label>User name</label>
-      <input required v-model="username" type="text" placeholder="Snoopy" />
+      <input required v-model="name" type="text" placeholder="Snoopy" />
       <label>Email</label>
       <input required v-model="email" type="text" placeholder="Snoopy" />
       <label>Password</label>c
@@ -40,14 +40,20 @@ export default {
   data() {
     return {
       isCreated:false,
-      username: "dogo",
+      name: "dogo",
       email:"",
+      age: 0,
       password: "dogy"
     };
   },
   methods: {
-    register: function() {
-    
+    register: function() {    
+  		if(this.name!='' && this.password!=''){
+  			this.toLogin();
+  		}
+  	},
+
+
   	//adopting hash to protect the password
     //	let password_sha = hex_sha1(hex_sha1( this.password ));
 
