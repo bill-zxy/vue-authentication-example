@@ -55,15 +55,15 @@ export default {
 
   	//需要想后端发送的登录参数
   	const registerParam = {
-        name: this.account,
-        email:this.email,
-        age:this.age,
-  			password: this.password
+        "name": this.name,
+        "email":this.email,
+        "age":this.age,
+  			"password": this.password
   	}; 
-    console.log(JSON.stringify(registerParam));
+    console.log(registerParam);
      //设置在登录状态
     this.isCreated = true;
-    axios.post('/users/create',JSON.stringify(registerParam))
+    axios.post('/users/create',registerParam)
          .then(response => this.userId = response.data.id);
 
     },
