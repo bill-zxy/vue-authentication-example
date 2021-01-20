@@ -1,0 +1,16 @@
+-------------------- Auto-Git Log --------------------
+		Wed Jan 20 2021 17:04:38 GMT+0800 (China Standard Time)
+------------------------------------------------------
+
+Modified files:
+* src/components/register/index.vue
+
+
+Created files:
+* .autogit/logs/log-20-0-2021-11-34-22.txt
+
+
+Deleted files:
+
+
+Renamed files:

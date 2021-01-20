@@ -8,7 +8,7 @@
       <input required v-model="name" type="text" placeholder="Snoopy" />
       <label>Email</label>
       <input required v-model="email" type="text" placeholder="Snoopy" />
-      <label>Password</label>c
+      <label>Password</label>
       <input
         required
         v-model="password"
@@ -18,8 +18,7 @@
       <hr />
       <button type="submit">Submit</button>
     </form>
-    <div v-if="isCreated"> Creating account successfully!</div>
-    <div v-else> Fail to create a new account!</div>
+    <div class ="card-body"> Returned Id: {{userId}}</div>
   </div>
 </template>
 
@@ -33,50 +32,41 @@
 </style>
 
 <script>
-import { AUTH_REQUEST } from "actions/auth";
+//import { AUTH_REQUEST } from "actions/auth";
+import axios from "axios";
 
 export default {
   name: "register",
   data() {
     return {
       isCreated:false,
-      name: "dogo",
+      name: "",
       email:"",
       age: 0,
-      password: "dogy"
+      password: "",
+      userId: null
     };
   },
   methods: {
     register: function() {    
-  		if(this.name!='' && this.password!=''){
-  			this.toLogin();
-  		}
-  	},
+      
+    //To encrypt the password 	
+    //let password_sha = hex_sha1(hex_sha1( this.password ));
 
+  	//需要想后端发送的登录参数
+  	const registerParam = {
+        name: this.account,
+        email:this.email,
+        age:this.age,
+  			password: this.password
+  	}; 
+    console.log(JSON.stringify(registerParam));
+     //设置在登录状态
+    this.isCreated = true;
+    axios.post('/users/create',JSON.stringify(registerParam))
+         .then(response => this.userId = response.data.id);
 
-  	//adopting hash to protect the password
-    //	let password_sha = hex_sha1(hex_sha1( this.password ));
-
-  //需要想后端发送的登录参数
-    
-  axios.post('/create', {
-         name: this.username,
-         email:this.email,
-         password:this.password        // 参数 firstName
-    })
-    .then(function (response) {
-        console.log(response);
-    })
-    .catch(function (error) {
-        console.log(error);
-    });
-    
-   this.isLoging = true;
-  
-  this.$store.dispatch(AUTH_REQUEST, { username, password }).then(() => {
-      this.$router.push("/");
-    });
-    }
+    },
   }
 };
 </script>
