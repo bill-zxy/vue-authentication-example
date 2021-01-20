@@ -29,22 +29,31 @@
 </style>
 
 <script>
-import { AUTH_REQUEST } from "actions/auth";
-
+//import { AUTH_REQUEST } from "actions/auth";
+import axios from "axios";
 export default {
   name: "login",
   data() {
     return {
-      username: "dogo",
-      password: "dogy"
+      isLogin:false,
+      userId:null,
+      username: "",
+      password: ""
     };
   },
   methods: {
     login: function() {
-      const { username, password } = this;
-      this.$store.dispatch(AUTH_REQUEST, { username, password }).then(() => {
-        this.$router.push("/");
-      });
+      
+      const loginParam = {
+        "username": this.username,
+      	"password": this.password
+  	}; 
+    console.log(loginParam);
+     //设置在登录状态
+    axios.post('/users/login',loginParam)
+         .then(response => this.userId = response.data.id);
+    if (this.userId != null) {
+       this.$router.push("/");}
     }
   }
 };

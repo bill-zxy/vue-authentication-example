@@ -65,7 +65,7 @@ export default {
     this.isCreated = true;
     axios.post('/users/create',registerParam)
          .then(response => this.userId = response.data.id);
-
+    console.log(this.userId);
     },
   }
 };
