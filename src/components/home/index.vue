@@ -7,11 +7,7 @@
       <feed-item v-for="(feed, index) in fakeFeed" :key="index" :feed="feed" />
     </div>
     <div v-if="!isAuthenticated && authStatus !== 'loading'">
-      <h1>Welcome to DogeBook !</h1>
-      <p>
-        When meeting new doge friends is harder than ever, Dogebook closes the
-        gap between all paws in the world
-      </p>
+      <h1>Welcome to Sign in!</h1>
       <login />
     </div>
   </div>
