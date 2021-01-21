@@ -48,14 +48,19 @@ export default {
       const loginParam = {
         "username": this.username,
       	"password": this.password
-  	}; 
+  	  }; 
 
-    axios.post('/users/login',loginParam)
+      axios.post('/users/login',loginParam)
          .then(response => this.userId = response.data.id);
-    if (this.userId != null) {
-          this.$router.push("/");}
-    this.$store.
+      if (this.userId != null) {
+
+        this.$store.dispatch(AUTH_REQUEST, { username, password }).then(() => {
+          this.$router.push("/");
+        });
+      }
     }
-  }
-};
+  },
+}
 </script>
+
+
