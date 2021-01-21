@@ -29,7 +29,7 @@
 </style>
 
 <script>
-import { AUTH_REQUEST } from "actions/auth";
+import { AUTH_SUCCESS} from "actions/auth";
 import axios from "axios";
 
 export default {
@@ -52,11 +52,11 @@ export default {
 
       axios.post('/users/login',loginParam)
          .then(response => this.userId = response.data.id);
+      console.log(response);
       if (this.userId != null) {
-
-        this.$store.dispatch(AUTH_REQUEST, { username, password }).then(() => {
-          this.$router.push("/");
-        });
+        console.log("Auth Success!");
+         this.$store.commit(AUTH_SUCCESS,this.userId);
+         this.$router.push("/");
       }
     }
   },
