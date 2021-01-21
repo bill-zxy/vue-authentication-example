@@ -10,7 +10,7 @@
       <input
         required
         v-model="password"
-        type="password"console.log(loginParam);
+        type="password"
         placeholder="Password"
       />
       <hr />
@@ -29,8 +29,9 @@
 </style>
 
 <script>
-//import { AUTH_REQUEST } from "actions/auth";
+import { AUTH_REQUEST } from "actions/auth";
 import axios from "axios";
+
 export default {
   name: "login",
   data() {
@@ -48,11 +49,12 @@ export default {
         "username": this.username,
       	"password": this.password
   	}; 
-    //设置在登录状态
+
     axios.post('/users/login',loginParam)
          .then(response => this.userId = response.data.id);
     if (this.userId != null) {
           this.$router.push("/");}
+    this.$store.
     }
   }
 };
