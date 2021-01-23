@@ -14,12 +14,21 @@
 </style>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "mypage",
   data() {
         return {
           msg:"<h1 style='color:red'> Today's News</h1>"
         };
+  },
+
+  mounted:function(){
+    axios.get('/usrs/news.html')
+        .then((response) => {
+            this.msg = response.data;
+        });
   },
 };
 </script>
