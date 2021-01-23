@@ -53,11 +53,9 @@ export default {
       axios.post('/users/login',loginParam)
          .then(response => this.userId = response.data.id);
       console.log(response);
-      if (this.userId != null) {
-        console.log("Auth Success!");
-         this.$store.commit(AUTH_SUCCESS,this.userId);
-         this.$router.push("/");
-      }
+      
+      this.$store.commit(AUTH_SUCCESS,this.userId);
+      this.$router.push("/mypage");
     }
   },
 }

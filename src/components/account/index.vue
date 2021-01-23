@@ -4,7 +4,7 @@
   <div>
     <div class="headline">
       <img src="../../assets/dog-profile.jpeg" />
-      <h1>Your doge profile</h1>
+      <h1>Your profile</h1>
     </div>
     <p v-if="profile.name">
       <strong>Name:</strong> {{ profile.title }} {{ profile.name }}

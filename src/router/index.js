@@ -5,6 +5,7 @@ import Account from "components/account";
 import Login from "components/login";
 import Register from "components/register";
 import store from "../store";
+import MyPage from "components/mypage";
 
 Vue.use(Router);
 
@@ -31,6 +32,11 @@ export default new Router({
       path: "/",
       name: "Home",
       component: Home
+    },
+    {
+      path: "/mypage",
+      name: "MyPage",
+      component: MyPage
     },
     {
       path: "/account",
