@@ -2,9 +2,8 @@
 
 <template>
   <div>
-     <p v-html="msg"></p>
+     <p v-html="msg">{{msg}}</p>
     </div>
-  </div>
 </template>
 
 <style>

@@ -54,8 +54,7 @@ export default {
          .then(response => this.userId = response.data.id);
       console.log(response);
       
-      this.$store.commit(AUTH_SUCCESS,this.userId);
-      this.$router.push("/mypage");
+      this.$router.push('/mypage');
     }
   },
 }
