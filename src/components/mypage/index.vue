@@ -2,10 +2,11 @@
 
 <template>
   <div>
-     <p v-html="msg">{{msg}}</p>
-    </div>
+     <span v-html="msg"></span>
+     <br>
+     <span v-text="msg"></span>
+  </div>
 </template>
-
 <style>
 .mypage {
   display: flex;

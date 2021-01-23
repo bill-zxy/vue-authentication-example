@@ -52,9 +52,10 @@ export default {
 
       axios.post('/users/login',loginParam)
          .then(response => this.userId = response.data.id);
-      console.log(response);
+      //console.log(response);
       
-      this.$router.push('/mypage');
+      //this.$router.push('/mypage');
+     this.$router.push('/register');
     }
   },
 }
