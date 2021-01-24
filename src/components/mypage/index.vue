@@ -20,7 +20,7 @@ export default {
   name: "mypage",
   data() {
         return {
-          msg:this.$store.getter.getPageData
+          msg:this.$store.getters.getPageData
         };
   },
 };

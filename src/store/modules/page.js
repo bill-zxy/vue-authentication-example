@@ -25,6 +25,7 @@ const actions = {
       axios.get('/pages/news.html')
           .then(resp => {
                commit(PAGE_SUCCESS, resp.data);
+               this.$router.push("/mypage");
                resolve(resp);
            })
         .catch(err => {
@@ -50,12 +51,9 @@ const mutations = {
     state.status = "success";
     state.data = resp.data;
   },
-  [AUTH_ERROR]: state => {
+  [PAGE_ERROR]: state => {
     state.status = "error";
     state.data = "";
-  },
-  [AUTH_LOGOUT]: state => {
-    state.token = "";
   }
 };
 

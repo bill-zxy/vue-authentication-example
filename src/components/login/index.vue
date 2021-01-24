@@ -57,7 +57,7 @@ export default {
 */  
     const { username, password } = this;
     this.$store.dispatch(AUTH_REQUEST, { username, password }).then(() => {
-        this.$router.push("/mypage");
+  //      this.$router.push("/mypage");
       });
 //    this.$router.push('/mypage');
   }

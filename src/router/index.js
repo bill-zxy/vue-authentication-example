@@ -36,7 +36,8 @@ export default new Router({
     {
       path: "/mypage",
       name: "MyPage",
-      component: MyPage
+      component: MyPage,
+      beforeEnter: ifAuthenticated
     },
     {
       path: "/account",
