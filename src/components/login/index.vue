@@ -44,7 +44,7 @@ export default {
   },
   methods: {
     login: function() {
-      
+/*      
       const loginParam = {
         "username": this.username,
       	"password": this.password
@@ -54,9 +54,13 @@ export default {
          .then(response => this.userId = response.data.id);
       //console.log(response);
       
-      this.$router.push('/mypage');
-    // this.$router.push('/register');
-    }
+*/  
+    const { username, password } = this;
+    this.$store.dispatch(AUTH_REQUEST, { username, password }).then(() => {
+        this.$router.push("/mypage");
+      });
+//    this.$router.push('/mypage');
+  }
   },
 }
 </script>
