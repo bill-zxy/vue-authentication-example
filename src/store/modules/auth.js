@@ -24,7 +24,7 @@ const actions = {
   [AUTH_REQUEST]: ({ commit, dispatch }, user) => {
     return new Promise((resolve, reject) => {
       commit(AUTH_REQUEST);
-      apiCall({ url: "login", data: user, method: "POST" })
+      apiCall({ url: "auth", data: user, method: "POST" })
           .then(resp => {
           localStorage.setItem("user-token", resp.token);
           // Here set the header of your ajax library to the token value.
