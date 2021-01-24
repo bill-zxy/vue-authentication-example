@@ -20,15 +20,8 @@ export default {
   name: "mypage",
   data() {
         return {
-          msg:"<h1 style='color:red'> Today's News</h1>"
+          msg:this.$store.getter.getPageData
         };
-  },
-
-  mounted:function(){
-    axios.get('/usrs/news.html')
-        .then((response) => {
-            this.msg = response.data;
-        });
   },
 };
 </script>

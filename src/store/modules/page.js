@@ -13,10 +13,10 @@ const state = {
   status: ""
 };
 
-/*const getters = {
-  isAuthenticated: state => !!state.token,
-  authStatus: state => state.status
-}; */
+const getters = {
+  getPageData: state => state.data,
+  getPageStatus: state => state.status
+}; 
 
 const actions = {
   [PAGE_REQUEST]: ({ commit, dispatch }, user) => {

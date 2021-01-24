@@ -2,6 +2,7 @@ import { USER_REQUEST, USER_ERROR, USER_SUCCESS } from "../actions/user";
 import apiCall from "utils/api";
 import Vue from "vue";
 import { AUTH_LOGOUT } from "../actions/auth";
+import { PAGE_REQUEST } from "../actions/page";
 
 const state = { status: "", profile: {} };
 
@@ -16,6 +17,7 @@ const actions = {
     apiCall({ url: "user/me" })
       .then(resp => {
         commit(USER_SUCCESS, resp);
+        dispatch(PAGE_REQUEST);
       })
       .catch(() => {
         commit(USER_ERROR);
