@@ -17,7 +17,7 @@ const actions = {
     apiCall({ url: "user/me" })
       .then(resp => {
         commit(USER_SUCCESS, resp);
-        dispatch(PAGE_REQUEST);
+    //    dispatch(PAGE_REQUEST);
       })
       .catch(() => {
         commit(USER_ERROR);

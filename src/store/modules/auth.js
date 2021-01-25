@@ -41,6 +41,11 @@ const actions = {
         });
     });
   },
+  [AUTH_SUCCESS]:({commit}) => {
+    return new Promise(resolve => {
+      commit(AUTH_SUCCESS,resp);
+    });
+  },
   [AUTH_LOGOUT]: ({ commit }) => {
     return new Promise(resolve => {
       commit(AUTH_LOGOUT);

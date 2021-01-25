@@ -36,30 +36,27 @@ export default {
   name: "login",
   data() {
     return {
-      isLogin:false,
-      userId:null,
       username: "",
       password: ""
     };
   },
   methods: {
     login: function() {
-/*      
+      
       const loginParam = {
         "username": this.username,
       	"password": this.password
   	  }; 
 
       axios.post('/users/login',loginParam)
-         .then(response => this.userId = response.data.id);
-      //console.log(response);
-      
-*/  
-    const { username, password } = this;
-    this.$store.dispatch(AUTH_REQUEST, { username, password }).then(() => {
-  //      this.$router.push("/mypage");
-      });
-//    this.$router.push('/mypage');
+         .then(response => {
+            console.log("Auth Succeed!");
+            this.$store.commit(AUTH_SUCCESS);
+            this.$router.push('/mypage');})
+         .catch(error => {
+            console.log("Auth Error!");
+            this.$store.commit(AUTH_ERROR);
+         });
   }
   },
 }

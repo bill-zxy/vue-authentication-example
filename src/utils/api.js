@@ -9,18 +9,22 @@ const mocks = {
 const apiCall = ({ url, data,method }) =>
   new Promise((resolve, reject) => {
     setTimeout(() => {
-      try {
-        const loginParam = {
-          "username": data.username,
-          "password": data.password
-        };
+      if (url == "auth") {
+        try {
+          const loginParam = {
+            "username": data.username,
+            "password": data.password
+          };
         axios.post('/users/login',loginParam)
             .then(response => this.$store.commit(AUTH_SUCCESS,response));
 /*        resolve(mocks[url][method || "GET"]);
         console.log(`Mocked '${url}' - ${method || "GET"}`);
         console.log("response: ", mocks[url][method || "GET"]);*/
-      } catch (err) {
-        reject(new Error(err));
+        } catch (err) {
+          reject(new Error(err));
+          }
+      } else if (url =="usr/me") {
+      
       }
     }, 1000);
   });

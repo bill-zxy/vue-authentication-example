@@ -6,6 +6,7 @@ import router from "./router";
 import store from "./store";
 import Loading from "components/lib/loading";
 import CenterContainer from "components/lib/center-container";
+window.axios = require('axios');
 
 Vue.config.productionTip = false;
 
