@@ -43,7 +43,7 @@ export default {
   methods: {
     login: function() {
       
-      const loginParam = {
+    /*  const loginParam = {
         "username": this.username,
       	"password": this.password
   	  }; 
@@ -58,6 +58,13 @@ export default {
             console.log("Auth Error!");
             this.$store.commit(AUTH_ERROR); });
       this.$router.push('/mypage');
+      */
+      //fetch the user inputs
+      const { username, password } = this;
+      //initiate the AUTH_REQUEST process;
+      this.$store.dispatch(AUTH_REQUEST, { username, password }).then(() => {
+        //this.$router.push("/");
+      });
   }
   },
 }

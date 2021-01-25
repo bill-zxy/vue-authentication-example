@@ -24,21 +24,29 @@ const actions = {
   [AUTH_REQUEST]: ({ commit, dispatch }, user) => {
     return new Promise((resolve, reject) => {
       commit(AUTH_REQUEST);
-      apiCall({ url: "auth", data: user, method: "POST" })
-          .then(resp => {
-          localStorage.setItem("user-token", resp.token);
-          // Here set the header of your ajax library to the token value.
-          // example with axios
-          // axios.defaults.headers.common['Authorization'] = resp.token
-          commit(AUTH_SUCCESS, resp);
-          dispatch(USER_REQUEST);
-          resolve(resp);
-        })
-        .catch(err => {
-          commit(AUTH_ERROR, err);
-          localStorage.removeItem("user-token");
-          reject(err);
-        });
+      const loginParam = {
+            "username": user.username,
+            "password": user.password
+          }; 
+    
+      axios.post('/users/login',loginParam)
+            .then(response => {
+                console.log("Auth Succeed!");
+                console.log(response);
+                //write the userID and username into user store module.
+                
+                //set AUTH status;           
+                commit(AUTH_SUCCESS);
+                //initiate the process of fetching usr profile
+                dispatch(USER_REQUEST);
+                resolve(response);
+              })
+             .catch(error => {
+                console.log("Auth Error!");
+                commit(AUTH_ERROR, err);
+                localStorage.removeItem("user-token");
+                reject(err);
+               });
     });
   },
   [AUTH_SUCCESS]:({commit}) => {

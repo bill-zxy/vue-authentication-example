@@ -15,7 +15,7 @@ const actions = {
   [USER_REQUEST]: ({ commit, dispatch }) => {
     commit(USER_REQUEST);
     //fetch the user profile from server. input:url. output:profile{}
-/*    apiCall({ url: "user/me" })
+    /*apiCall({ url: "user/me" })
       .then(resp => {
         commit(USER_SUCCESS, resp);
         dispatch(PAGE_REQUEST);
@@ -23,7 +23,7 @@ const actions = {
       .catch(() => {
         commit(USER_ERROR);
         // if resp is unauthorized, logout, to
-//        dispatch(AUTH_LOGOUT);
+      //  dispatch(AUTH_LOGOUT);
       });*/
     //Demo example to skip the real interactionw with server.  
     commit(USER_SUCCESS,{});
