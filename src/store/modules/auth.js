@@ -44,6 +44,7 @@ const actions = {
   [AUTH_SUCCESS]:({commit}) => {
     return new Promise(resolve => {
       commit(AUTH_SUCCESS,resp);
+      dispatch(USER_REQUEST);
     });
   },
   [AUTH_LOGOUT]: ({ commit }) => {

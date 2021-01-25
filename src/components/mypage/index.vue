@@ -8,7 +8,7 @@
     <div v-if="error" class="error">
       {{error}}
     </div>
-    <div v-if="post" class="content">    
+    <div v-if="post" class="post">    
      <p v-html="post">{{post}}</p>
     </div> 
   </div>
@@ -28,7 +28,7 @@ export default {
   data() {
         return {
           loading:false,
-          post:null,
+          post:"Hello World!",
           error:null
         };
   },

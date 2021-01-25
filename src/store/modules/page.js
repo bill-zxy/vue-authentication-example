@@ -9,7 +9,7 @@ import {
 import axios from "axios";
 
 const state = {
-  data: "",
+//  data: "",
   status: ""
 };
 
@@ -22,25 +22,16 @@ const actions = {
   [PAGE_REQUEST]: ({ commit, dispatch }, user) => {
     return new Promise((resolve, reject) => {
       commit(PAGE_REQUEST);
-      axios.get('/pages/news.html')
-          .then(resp => {
-               commit(PAGE_SUCCESS, resp.data);
-               this.$router.push("/mypage");
-               resolve(resp);
-           })
-        .catch(err => {
-          commit(PAGE_ERROR, err);
-          reject(err);
-        });
-    });
-  },
-/*  [PAGE_SUCCESS]: ({ commit }) => {
+    }); },
+  [PAGE_SUCCESS]: ({ commit }) => {
     return new Promise(resolve => {
-      commit(AUTH_LOGOUT);
-      localStorage.removeItem("user-token");
-      resolve();
-    });
-  }*/
+      commit(PAGE_SUCCESS);
+    }); },
+  [PAGE_ERROR]: ({ commit }) => {
+      return new Promise(resolve => {
+        commit(PAGE_ERROR);
+      }); },
+  
 };
 
 const mutations = {

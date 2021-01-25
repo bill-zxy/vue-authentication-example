@@ -52,7 +52,7 @@ export default {
          .then(response => {
             console.log("Auth Succeed!");
             console.log(response);
-            this.$store.commit(AUTH_SUCCESS);
+            this.$store.dispatch(AUTH_SUCCESS);
             })
          .catch(error => {
             console.log("Auth Error!");
