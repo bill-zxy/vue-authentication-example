@@ -29,8 +29,9 @@
 </style>
 
 <script>
-import { AUTH_SUCCESS} from "actions/auth";
-import axios from "axios";
+import {AUTH_REQUEST} from "actions/auth";
+import {USER_REQUEST} from "actions/user";
+import {PAGE_REQUEST} from "actions/page";
 
 export default {
   name: "login",
@@ -45,8 +46,9 @@ export default {
       
      //fetch the user inputs
       const { username, password } = this;
-      userId =null;
+      var userId =null;
       //initiate the AUTH_REQUEST process;
+      console.log("getting into dispatching AUTH_REQUEST procedure in login.vue");
       this.$store.dispatch(AUTH_REQUEST, { username, password })
                  .then(response => {
                      userId = response.data;})
@@ -54,7 +56,8 @@ export default {
                      return;
                  });    
       //initiate the process of downloading user profile  
-      this.$store.dispach(USER_REQUEST,{username:username,userId:userId})
+      console.log("getting into dispatching USER_REQUEST procedure in login.vue");
+      this.$store.dispatch(USER_REQUEST,{username,userId})
                  .then(response=>{
                       
                   })
@@ -62,6 +65,7 @@ export default {
                       this.$router.push('/login');
                 });
       //initiate the process of downloading my page. 
+      console.log("Moving into dispatching PAGE_REQUESt procedure in index.vue of login component!");
       this.$store.dispatch(PAGE_REQUEST,{userId})
                  .then(response => {
 
@@ -69,9 +73,10 @@ export default {
                  .catch(err => {
 
                  });
-      this.$route.push('/mypage');
+      this.$router.push('/mypage');
 
   },
+},
 }
 </script>
 

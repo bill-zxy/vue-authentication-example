@@ -9,7 +9,7 @@
       {{error}}
     </div>
     <div v-if="post" class="post">    
-     <p v-html="post">{{post}}</p>
+     <p v-html="content">{{content}}</p>
     </div> 
   </div>
 </template>
@@ -38,6 +38,11 @@ export default {
   },
   watch:{
     '$route':'fetchData'
+  },
+  computed:{
+    content() {
+      return this.$store.state.data;
+    },
   },
   methods:{
      fetchData () {

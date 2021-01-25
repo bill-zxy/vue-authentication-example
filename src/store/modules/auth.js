@@ -31,7 +31,7 @@ const actions = {
             "username": user.username,
             "password": user.password
           }; 
-    
+      console.log("Processing AUTH_REQUEST signal in auth.js module");
       axios.post('/users/login',loginParam)
             .then(response => {
                 console.log("Auth Succeed!");
