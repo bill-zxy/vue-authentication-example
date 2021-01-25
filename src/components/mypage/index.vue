@@ -46,15 +46,7 @@ export default {
        const fetchedID = this.$route.params.id;
        console.log(fetchedID);
        //get the account from store
-       //fetch the data with account from server
-       axios.get('/pages/news.html')
-            .then(response =>{
-                if (this.$route.params.id !==fetchedId) return;
-                this.post=response.data;})
-            .catch((error) =>{
-                this.error = error.toString();
-            });
-            
+       post = this.$store.getPageData; 
        //set state status
        this.loading = false;
      },

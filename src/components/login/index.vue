@@ -43,31 +43,35 @@ export default {
   methods: {
     login: function() {
       
-    /*  const loginParam = {
-        "username": this.username,
-      	"password": this.password
-  	  }; 
-
-      axios.post('/users/login',loginParam)
-         .then(response => {
-            console.log("Auth Succeed!");
-            console.log(response);
-            this.$store.dispatch(AUTH_SUCCESS);
-            })
-         .catch(error => {
-            console.log("Auth Error!");
-            this.$store.commit(AUTH_ERROR); });
-      this.$router.push('/mypage');
-      */
-      //fetch the user inputs
+     //fetch the user inputs
       const { username, password } = this;
+      userId =null;
       //initiate the AUTH_REQUEST process;
-      this.$store.dispatch(AUTH_REQUEST, { username, password }).then(response => {
-        //this.$router.push("/");
+      this.$store.dispatch(AUTH_REQUEST, { username, password })
+                 .then(response => {
+                     userId = response.data;})
+                 .catch(err =>{
+                     return;
+                 });    
       //initiate the process of downloading user profile  
-      this.$store.dispach(USER_REQUEST,{username,response.data});
-      });
-  }
+      this.$store.dispach(USER_REQUEST,{userId})
+                 .then(response=>{
+                      //geting into the main page view;
+                      //this.$router.push('/mypage');
+                  })
+                .catch(err =>{
+                      this.$router.push('/login');
+                });
+      //initiate the process of downloading my page. 
+      this.$store.dispatch(PAGE_REQUEST,{userId})
+                 .then(response => {
+
+                 })
+                 .catch(err => {
+
+                 });
+      this.$route.push('/mypage');
+
   },
 }
 </script>

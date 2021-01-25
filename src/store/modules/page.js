@@ -9,7 +9,7 @@ import {
 import axios from "axios";
 
 const state = {
-//  data: "",
+  data: null,
   status: ""
 };
 
