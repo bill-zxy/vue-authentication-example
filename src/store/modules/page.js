@@ -6,6 +6,7 @@ import {
 } from "../actions/page";
 //import { USER_REQUEST } from "../actions/user";
 //import apiCall from "utils/api";
+import axios from "axios";
 
 const state = {
   data: null,
@@ -21,15 +22,16 @@ const actions = {
   [PAGE_REQUEST]: ({ commit, dispatch}, user) => {
     return new Promise((resolve, reject) => {
       commit(PAGE_REQUEST);
-      axios.post('/pages/news',user)
+      axios.get('/pages/news.html')
             .then(response => {
                 console.log("Get Pages Succeed!");
                 //write the content into data in page store.
+                console.log(response);
                 commit(PAGE_SUCCESS,response.data);
               })
              .catch(error => {
                 console.log("Fetching Page Error!");
-                commit(PAGE_ERROR, err);
+                commit(PAGE_ERROR, error);
                 reject(error);
                });
 

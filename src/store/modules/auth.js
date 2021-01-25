@@ -10,7 +10,7 @@ import {
   USER_SUCCESS,
   USER_ERROR } from "../actions/user";
 import apiCall from "utils/api";
-
+import axios from "axios";
 
 const state = {
   token: localStorage.getItem("user-token") || "",
@@ -44,9 +44,9 @@ const actions = {
               })
              .catch(error => {
                 console.log("Auth Error!");
-                commit(AUTH_ERROR, err);
+                commit(AUTH_ERROR, error);
                 localStorage.removeItem("user-token");
-                reject(err);
+                reject(error);
                });
     });
   },

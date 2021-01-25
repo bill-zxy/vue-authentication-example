@@ -34,7 +34,7 @@ export default {
   },
   created() {
      console.log("My page is created!");
-     this.fetchData()
+     this.fetchData();
   },
   watch:{
     '$route':'fetchData'
@@ -51,7 +51,9 @@ export default {
        const fetchedID = this.$route.params.id;
        console.log(fetchedID);
        //get the account from store
-       post = this.$store.getPageData; 
+       this.post = this.$store.getPageData; 
+       console.log("the value of post in page module of store is:");
+       console.log(this.post);
        //set state status
        this.loading = false;
      },
