@@ -54,10 +54,9 @@ export default {
                      return;
                  });    
       //initiate the process of downloading user profile  
-      this.$store.dispach(USER_REQUEST,{userId})
+      this.$store.dispach(USER_REQUEST,{username:username,userId:userId})
                  .then(response=>{
-                      //geting into the main page view;
-                      //this.$router.push('/mypage');
+                      
                   })
                 .catch(err =>{
                       this.$router.push('/login');

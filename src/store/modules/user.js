@@ -12,7 +12,7 @@ const getters = {
 };
 
 const actions = {
-  [USER_REQUEST]: ({ commit, dispatch }) => {
+  [USER_REQUEST]: ({ commit, dispatch },user) => {
     commit(USER_REQUEST);
     //fetch the user profile from server. input:url. output:profile{}
     /*apiCall({ url: "user/me" })
@@ -26,7 +26,8 @@ const actions = {
       //  dispatch(AUTH_LOGOUT);
       });*/
     //Demo example to skip the real interactionw with server.  
-    commit(USER_SUCCESS,{});
+    
+    commit(USER_SUCCESS,{username:user.username,userId:user.userId});
     dispatch(PAGE_REQUEST);  
   }
 };

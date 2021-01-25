@@ -22,11 +22,24 @@ const actions = {
   [PAGE_REQUEST]: ({ commit, dispatch }, user) => {
     return new Promise((resolve, reject) => {
       commit(PAGE_REQUEST);
-    }); },
-  [PAGE_SUCCESS]: ({ commit }) => {
+      axios.post('/pages/news',user)
+            .then(response => {
+                console.log("Get Pages Succeed!");
+                //write the content into data in page store.
+                commit(PAGE_SUCCESS,response.data);
+              })
+             .catch(error => {
+                console.log("Fetching Page Error!");
+                commit(PAGE_ERROR, err);
+                reject(err);
+               });
+
+    }); 
+    },
+  /*[PAGE_SUCCESS]: ({ commit }) => {
     return new Promise(resolve => {
       commit(PAGE_SUCCESS);
-    }); },
+    }); },*/
   [PAGE_ERROR]: ({ commit }) => {
       return new Promise(resolve => {
         commit(PAGE_ERROR);
@@ -40,11 +53,11 @@ const mutations = {
   },
   [PAGE_SUCCESS]: (state, resp) => {
     state.status = "success";
-    state.data = resp.data;
+    state.data = resp;
   },
   [PAGE_ERROR]: state => {
     state.status = "error";
-    state.data = "";
+    state.data = null;
   }
 };
 
