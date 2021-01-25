@@ -21,6 +21,7 @@
       <li v-if="!isAuthenticated && !authLoading">
         <router-link to="/login">Sign In  </router-link>
         <router-link to="/register">  Sign Up</router-link> 
+        <router-link to="/mypage">  Content</router-link> 
       </li>
     </ul>
 

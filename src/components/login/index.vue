@@ -51,12 +51,13 @@ export default {
       axios.post('/users/login',loginParam)
          .then(response => {
             console.log("Auth Succeed!");
+            console.log(response);
             this.$store.commit(AUTH_SUCCESS);
-            this.$router.push('/mypage');})
+            })
          .catch(error => {
             console.log("Auth Error!");
-            this.$store.commit(AUTH_ERROR);
-         });
+            this.$store.commit(AUTH_ERROR); });
+      this.$router.push('/mypage');
   }
   },
 }
