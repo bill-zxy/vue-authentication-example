@@ -62,8 +62,10 @@ export default {
       //fetch the user inputs
       const { username, password } = this;
       //initiate the AUTH_REQUEST process;
-      this.$store.dispatch(AUTH_REQUEST, { username, password }).then(() => {
+      this.$store.dispatch(AUTH_REQUEST, { username, password }).then(response => {
         //this.$router.push("/");
+      //initiate the process of downloading user profile  
+      this.$store.dispach(USER_REQUEST,{username,response.data});
       });
   }
   },

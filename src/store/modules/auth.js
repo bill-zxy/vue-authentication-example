@@ -5,7 +5,10 @@ import {
   AUTH_SUCCESS,
   AUTH_LOGOUT
 } from "../actions/auth";
-import { USER_REQUEST } from "../actions/user";
+import { 
+  USER_REQUEST,
+  USER_SUCCESS,
+  USER_ERROR } from "../actions/user";
 import apiCall from "utils/api";
 
 
@@ -34,11 +37,9 @@ const actions = {
                 console.log("Auth Succeed!");
                 console.log(response);
                 //write the userID and username into user store module.
-                
+                userprofile = {username: user.username,userId:response.data};
                 //set AUTH status;           
-                commit(AUTH_SUCCESS);
-                //initiate the process of fetching usr profile
-                dispatch(USER_REQUEST);
+                commit(AUTH_SUCCESS,response.data);
                 resolve(response);
               })
              .catch(error => {
@@ -49,12 +50,12 @@ const actions = {
                });
     });
   },
-  [AUTH_SUCCESS]:({commit}) => {
+  /*[AUTH_SUCCESS]:({commit}) => {
     return new Promise(resolve => {
       commit(AUTH_SUCCESS,resp);
       dispatch(USER_REQUEST);
     });
-  },
+  },*/
   [AUTH_LOGOUT]: ({ commit }) => {
     return new Promise(resolve => {
       commit(AUTH_LOGOUT);
