@@ -2,7 +2,7 @@
 
 <template>
   <div class = "mypage">
-     <p v-html="content"></p>
+     <p v-html="getContent"></p>
   </div>
 </template>
 <style>
@@ -14,17 +14,20 @@
 </style>
 
 <script>
-import mapState from "vuex";
+import {mapState} from 'vuex';
 export default {
   name: "mypage",
   data() {
         return {
           post:"Hello World!"
-        };
+        }
   },
  
-  computed:mapState ({
-    content:state => this.$store.state.data
-    })
+  computed: mapState({
+         content:state => state.page.data,
+         getContent (state) {
+           return state.page.data
+         }
+  })
  };
 </script>
