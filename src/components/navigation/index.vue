@@ -23,8 +23,6 @@
         <router-link to="/register">  Sign Up</router-link> 
         </li>
     </ul>
-
-
   </div>
 </template>
 
