@@ -4,7 +4,8 @@
   <div>
     <loading v-if="loading" />
     <div v-if="isAuthenticated">
-      <feed-item v-for="(feed, index) in fakeFeed" :key="index" :feed="feed" />
+//      <feed-item v-for="(feed, index) in fakeFeed" :key="index" :feed="feed" />
+        <mypage />
     </div>
     <div v-if="!isAuthenticated && authStatus !== 'loading'">
       <h1>Welcome to Sign in!</h1>
@@ -33,6 +34,10 @@ export default {
     FeedItem
   },
   name: "home",
+  created: function() {
+    //if isAuthenticated, fetch my page directly;
+    //if !isAuthenticated, 
+  },
   computed: {
     ...mapGetters(["isAuthenticated", "authStatus"]),
     loading: function() {

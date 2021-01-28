@@ -22,7 +22,10 @@ export default {
           post:"Hello World!"
         }
   },
- 
+  created:function() {
+    //if isAuthenticated, get page with token;
+    //if !isAuthenticated, 
+  },
   computed: mapState({
          content:state => state.page.data,
          getContent (state) {
