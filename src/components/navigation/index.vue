@@ -6,7 +6,7 @@
       <li>
         <router-link class="brand" to="/">
           <img src="../../assets/logo.png" width="40px" /><strong
-            >DOGEBOOK</strong
+            >Hello!</strong
           >
         </router-link>
       </li>
