@@ -37,9 +37,10 @@ const actions = {
                 console.log("Auth Succeed!");
                 console.log(response);
                 //write the userID and username into user store module.
-                userprofile = {username: user.username,userId:response.data};
+                //userprofile = {username: user.username,userId:response.data};
                 //set AUTH status;           
                 commit(AUTH_SUCCESS,response.data);
+                localStorage.setItem('user-token', response);
                 resolve(response);
               })
              .catch(error => {
@@ -71,7 +72,7 @@ const mutations = {
   },
   [AUTH_SUCCESS]: (state, resp) => {
     state.status = "success";
-    state.token = resp.token;
+    state.token = resp;
     state.hasLoadedOnce = true;
   },
   [AUTH_ERROR]: state => {
