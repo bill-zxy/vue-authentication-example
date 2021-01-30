@@ -22,14 +22,16 @@ export default {
   },
   name: "app",
   created: function() {
-    let requestToken = local.Storage.getItem('abcd-token');
+    var requestToken = local.Storage.getItem('abcd-token');
     this.$store.state=requestToken;
     if (this.$store.getters.isAuthenticated) {
       this.$store.dispatch(USER_REQUEST);
+      this.$router.push('/mypage');
     } else {
       this.$store.dispatch(AUTH_REQUEST);
-      this.$router.push('/mypage');
+      this.$router.push('/');
     }
+    console.log("Componnet App is created, and the token is "+requestToken);
   }
 };
 </script>

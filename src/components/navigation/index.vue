@@ -18,7 +18,7 @@
       <li v-if="isAuthenticated" @click="logout">
         <span class="logout">Logout</span>
       </li>
-      <li v-if="!isAuthenticated && !authLoading">
+      <li v-if="!isAuthenticated">
         <router-link to="/login">Sign In  </router-link>
         <router-link to="/register">  Sign Up</router-link> 
         </li>
