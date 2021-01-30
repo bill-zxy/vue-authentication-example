@@ -13,13 +13,13 @@ import apiCall from "utils/api";
 import axios from "axios";
 
 const state = {
-  token: localStorage.getItem("user-token") || "",
+  token: localStorage.getItem("abcd-token") || "",
   status: "",
   hasLoadedOnce: false
 };
 
 const getters = {
-  isAuthenticated: state => !!state.token,
+  isAuthenticated: (state) =>{!!state.token },
   authStatus: state => state.status
 };
 
@@ -40,15 +40,18 @@ const actions = {
                 //userprofile = {username: user.username,userId:response.data};
                 //set AUTH status;           
                 commit(AUTH_SUCCESS,response.data);
-                localStorage.setItem('user-token', response.data);
+                localStorage.setItem('adbd-token', response.data);
                 resolve(response);
               })
              .catch(error => {
-                console.log("Auth Error!");
-                commit(AUTH_ERROR, error);
-                localStorage.removeItem("user-token");
-                reject(error);
-               });
+                console.log("Moving into Auth Error procedure in actions!");
+                if (error.response) {
+                  console.log(error); 
+                  commit(AUTH_ERROR, error);
+                   localStorage.removeItem("abcd-token");
+                   reject(error);
+                }                
+              });
     });
   },
   /*[AUTH_SUCCESS]:({commit}) => {
@@ -60,7 +63,7 @@ const actions = {
   [AUTH_LOGOUT]: ({ commit }) => {
     return new Promise(resolve => {
       commit(AUTH_LOGOUT);
-      localStorage.removeItem("user-token");
+      localStorage.removeItem("abcd-token");
       resolve();
     });
   }

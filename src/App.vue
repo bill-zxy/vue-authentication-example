@@ -22,8 +22,13 @@ export default {
   },
   name: "app",
   created: function() {
+    let requestToken = local.Storage.getItem('abcd-token');
+    this.$store.state=requestToken;
     if (this.$store.getters.isAuthenticated) {
       this.$store.dispatch(USER_REQUEST);
+    } else {
+      this.$store.dispatch(AUTH_REQUEST);
+      this.$router.push('/mypage');
     }
   }
 };
