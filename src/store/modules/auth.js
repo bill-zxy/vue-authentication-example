@@ -12,14 +12,21 @@ import {
 import apiCall from "utils/api";
 import axios from "axios";
 
-const state = {
+var state = {
   token: localStorage.getItem("abcd-token") || "",
   status: "",
   hasLoadedOnce: false
 };
 
 const getters = {
-  isAuthenticated: (state) =>{state.token },
+  isAuthenticated: (state) =>{
+    if (state.token == "") {
+      return false;
+    }
+    else {
+      return true;
+    }
+  },
   authStatus: state => state.status
 };
 
