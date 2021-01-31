@@ -21,9 +21,12 @@ export default {
     Navigation
   },
   name: "app",
-  created: function() {
+  
+  /*created: function() {
     var requestToken = local.Storage.getItem('abcd-token');
-    this.$store.state=requestToken;
+    if (requestToken != null) {
+        this.$store.auth.token=requestToken;
+} 
     if (this.$store.getters.isAuthenticated) {
       console.log("Moving into the user request procedure in App.vue");
       this.$store.dispatch(USER_REQUEST);
@@ -34,7 +37,7 @@ export default {
     }
     console.log("Componnet App is created, and the token is "+requestToken);
   }
-};
+};*/
 </script>
 
 <style>
