@@ -1,0 +1,16 @@
+-------------------- Auto-Git Log --------------------
+		Sun Jan 31 2021 10:42:43 GMT+0800 (China Standard Time)
+------------------------------------------------------
+
+Modified files:
+* src/store/modules/auth.js
+
+
+Created files:
+* .autogit/logs/log-30-0-2021-17-31-32.txt
+
+
+Deleted files:
+
+
+Renamed files:
