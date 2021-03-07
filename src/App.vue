@@ -36,8 +36,8 @@ export default {
       this.$router.push('/');
     }
     console.log("Componnet App is created, and the token is "+requestToken);
-  }
-};*/
+  }*/
+};
 </script>
 
 <style>
